@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#29254f">
+<title>PSV Tahun 5 | Haiwan Peliharaan</title>
+<style>
+:root{--ink:#24213f;--purple:#6557d9;--pink:#ff8eaa;--cream:#fff9ef;--mint:#c9f3e3;--yellow:#ffe18a;--blue:#dceaff}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(140deg,#f7efff,#fff9ef 55%,#eaf8ff);color:var(--ink)}
+header{background:linear-gradient(120deg,#29254f,#6557d9);color:white;padding:25px 18px 22px;text-align:center}
+header .tag{display:inline-block;background:#ffffff22;border:1px solid #ffffff55;border-radius:99px;padding:5px 12px;font-size:.8rem}
+h1{font-size:clamp(1.7rem,5vw,2.7rem);margin:12px 0 5px}header p{margin:0 auto;max-width:700px;opacity:.92}
+main{max-width:1050px;margin:auto;padding:16px}
+.progress-wrap{background:white;border-radius:16px;padding:12px 15px;box-shadow:0 6px 20px #29254f12;margin-bottom:14px}
+.progress-head{display:flex;justify-content:space-between;font-size:.88rem;font-weight:700;margin-bottom:8px}.progress{height:9px;background:#eeeaf8;border-radius:20px;overflow:hidden}.progress div{height:100%;width:25%;background:linear-gradient(90deg,var(--pink),var(--purple));transition:width .3s}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:15px}
+.tab{border:0;border-radius:13px;padding:12px 6px;background:#fff;color:var(--ink);font-weight:800;box-shadow:0 4px 12px #29254f0c;cursor:pointer}
+.tab.active{background:var(--purple);color:#fff}.tab small{display:block;font-size:.72rem;font-weight:600;opacity:.8;margin-top:3px}
+.panel{display:none;background:white;border-radius:22px;padding:clamp(16px,3vw,28px);box-shadow:0 12px 35px #29254f12;animation:fade .25s}.panel.active{display:block}@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2{margin-top:0;font-size:1.45rem}h3{margin-bottom:7px}.sub{color:#68647d;margin-top:-5px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.card{border:1px solid #eee8fb;background:#fffdff;border-radius:16px;padding:15px}.emoji{font-size:2.1rem}.card p{margin:7px 0 0;color:#5f5a75;font-size:.94rem}
+.callout{padding:13px 15px;background:#f0edff;border-left:4px solid var(--purple);border-radius:10px;margin:15px 0}.warn{background:#fff3d4;border-left-color:#e6a700}
+button{font:inherit}.action{border:0;border-radius:12px;padding:11px 16px;font-weight:800;background:var(--purple);color:white;cursor:pointer}.action.secondary{background:#ece9ff;color:var(--ink)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.cat-area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px;align-items:center}.cat-stage{background:linear-gradient(#eaf5ff,#f8f1ff);border-radius:18px;padding:12px;text-align:center;min-height:260px;display:flex;flex-direction:column;justify-content:center}
+.cat-stage svg{width:min(100%,320px);margin:auto}.step-list{display:grid;gap:9px}.step{padding:12px;border-radius:12px;background:#f8f6ff;border:1px solid #ebe6ff;cursor:pointer;text-align:left;color:var(--ink)}.step.selected{background:#e6e1ff;border:2px solid var(--purple)}.step strong{display:block}.step span{font-size:.9rem;color:#615d77}
+.materials{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.chip{border-radius:99px;padding:8px 12px;background:#e6f8ef;font-size:.9rem;font-weight:700}
+.quiz-q{border:1px solid #ece8f8;border-radius:14px;padding:15px;margin:12px 0}.quiz-q p{font-weight:800;margin:0 0 10px}.option{display:flex;gap:8px;align-items:flex-start;padding:8px;border-radius:9px;cursor:pointer}.option:hover{background:#f6f3ff}.option input{margin-top:5px;accent-color:var(--purple)}
+.feedback{font-weight:700;margin-top:10px}.result{display:none;background:#effaf5;border-radius:16px;padding:16px;margin-top:14px}
+footer{text-align:center;padding:20px;color:#716b86;font-size:.85rem}
+@media(max-width:620px){.tabs{grid-template-columns:repeat(2,1fr)}.cat-area{grid-template-columns:1fr}.cat-stage{min-height:210px}.tab{padding:10px 5px}}
+</style>
+</head>
+<body>
+<header>
+ <span class="tag">PENDIDIKAN SENI VISUAL • TAHUN 5</span>
+ <h1>🐾 HAIWAN PELIHARAAN</h1>
+ <p>Unit 9 · 9.1 Media dan Teknik Stabail · 9.2 Stabail Kucing Kesayangan</p>
+</header>
+<main>
+ <div class="progress-wrap"><div class="progress-head"><span>Perjalanan pembelajaran</span><span id="progressText">1 daripada 4</span></div><div class="progress"><div id="progressBar"></div></div></div>
+ <nav class="tabs" aria-label="Bahagian simulator">
+  <button class="tab active" data-tab="0">📘 Pengenalan<small>Kenali stabail</small></button>
+  <button class="tab" data-tab="1">🧰 Media & Teknik<small>9.1</small></button>
+  <button class="tab" data-tab="2">🐱 Bina Kucing<small>9.2</small></button>
+  <button class="tab" data-tab="3">🏅 Kuiz & Skor<small>Semak ilmu</small></button>
+ </nav>
+ <section class="panel active" id="panel0">
+  <h2>Selamat datang, artis cilik!</h2><p class="sub">Mari hasilkan karya tiga dimensi bertemakan haiwan peliharaan.</p>
+  <div class="cards">
+   <article class="card"><div class="emoji">🗿</div><h3>Apakah stabail?</h3><p>Stabail ialah karya seni tiga dimensi yang mempunyai tapak atau struktur yang stabil dan boleh berdiri dengan kukuh.</p></article>
+   <article class="card"><div class="emoji">🐈</div><h3>Tema karya</h3><p>Haiwan peliharaan seperti kucing, arnab, ikan dan burung boleh dijadikan inspirasi karya.</p></article>
+   <article class="card"><div class="emoji">🎨</div><h3>Hasil pembelajaran</h3><p>Murid mengenal media dan teknik serta merancang stabail berbentuk kucing kesayangan.</p></article>
+  </div>
+  <div class="callout"><strong>Cabaran kamu:</strong> pilih media yang sesuai, bina bentuk kucing, pastikan tapak seimbang dan hias karya dengan kreatif.</div>
+  <div class="actions"><button class="action" onclick="go(1)">Mula belajar →</button></div>
+ </section>
+ <section class="panel" id="panel1">
+  <h2>9.1 — Media dan Teknik Stabail</h2><p class="sub">Tekan kad untuk membaca kegunaan setiap media.</p>
+  <div class="cards">
+   <article class="card" onclick="showMedia('Kertas dan kadbod','Boleh digunting, dilipat atau digulung untuk membentuk badan, telinga dan tapak. Pilih kadbod yang cukup tebal supaya tidak mudah tumbang.')" tabindex="0"><div class="emoji">📦</div><h3>Kertas & kadbod</h3><p>Bahan ringan untuk membina bentuk dan tapak.</p></article>
+   <article class="card" onclick="showMedia('Kotak terpakai','Kotak kecil boleh menjadi rangka badan. Gunakan semula bahan yang bersih dan pastikan sambungan kukuh.')" tabindex="0"><div class="emoji">🧃</div><h3>Kotak terpakai</h3><p>Bahan kitar semula untuk rangka.</p></article>
+   <article class="card" onclick="showMedia('Plastisin atau tanah liat','Sesuai untuk membentuk bahagian kecil seperti hidung, mata atau kaki. Tekan dan cantum dengan kemas.')" tabindex="0"><div class="emoji">🟤</div><h3>Plastisin / tanah liat</h3><p>Membentuk bahagian kecil dan tekstur.</p></article>
+   <article class="card" onclick="showMedia('Gam, pita pelekat dan gunting','Gam atau pita membantu mencantum bahan. Gunting digunakan dengan cermat; minta bantuan guru jika menggunakan alat tajam.')" tabindex="0"><div class="emoji">✂️</div><h3>Alat & bahan cantuman</h3><p>Untuk memotong dan menyambung bahagian.</p></article>
+  </div>
+  <div class="callout" id="mediaInfo"><strong>Ingat:</strong> klik mana-mana kad media untuk mengetahui kegunaannya.</div>
+  <h3>Teknik yang boleh digunakan</h3>
+  <div class="cards">
+   <article class="card"><h3>📐 Membina</h3><p>Menyusun dan mencantum bentuk supaya menjadi struktur tiga dimensi.</p></article>
+   <article class="card"><h3>🌀 Menggulung / melipat</h3><p>Membentuk kertas atau kadbod untuk menghasilkan bahagian karya.</p></article>
+   <article class="card"><h3>🧩 Mencantum</h3><p>Menggabungkan bahagian dengan gam atau pita supaya kukuh.</p></article>
+   <article class="card"><h3>🖌️ Menghias</h3><p>Mewarnakan, melakar corak dan menambah perincian.</p></article>
+  </div>
+  <div class="callout warn"><strong>Keselamatan:</strong> gunakan gunting dan gam mengikut arahan guru. Jangan gunakan pisau pemotong tanpa pengawasan.</div>
+  <div class="actions"><button class="action secondary" onclick="go(0)">← Kembali</button><button class="action" onclick="go(2)">Bina kucing →</button></div>
+ </section>
+ <section class="panel" id="panel2">
+  <h2>9.2 — Stabail Kucing Kesayangan</h2><p class="sub">Pilih langkah untuk melihat bagaimana bentuk kucing dibina.</p>
+  <div class="cat-area">
+   <div class="cat-stage">
+    <svg id="catSvg" viewBox="0 0 300 250" role="img" aria-label="Ilustrasi kucing tiga dimensi di atas tapak">
+     <ellipse cx="150" cy="221" rx="100" ry="13" fill="#d4c9ec"/>
+     <path d="M64 202 L234 202 L253 218 L83 218 Z" fill="#8c77d9" stroke="#5546ad" stroke-width="2"/>
+     <path d="M83 218 L253 218 L253 226 L83 226 Z" fill="#6557b9"/>
+     <ellipse cx="151" cy="154" rx="58" ry="52" fill="#ffbf8e" stroke="#9d5f4a" stroke-width="3"/>
+     <path d="M103 117 L105 65 L140 96 Z" fill="#ffbf8e" stroke="#9d5f4a" stroke-width="3"/>
+     <path d="M162 96 L198 65 L199 119 Z" fill="#ffbf8e" stroke="#9d5f4a" stroke-width="3"/>
+     <path d="M112 88 L113 76 L129 94 Z M175 94 L192 76 L191 89 Z" fill="#f58e9b"/>
+     <ellipse cx="150" cy="115" rx="51" ry="43" fill="#ffd3a9" stroke="#9d5f4a" stroke-width="3"/>
+     <ellipse cx="132" cy="112" rx="6" ry="9" fill="#29254f"/><ellipse cx="169" cy="112" rx="6" ry="9" fill="#29254f"/>
+     <path d="M145 125 Q150 132 155 125 Q150 121 145 125" fill="#d66b79"/>
+     <path d="M150 131 Q142 140 134 132 M150 131 Q158 140 166 132" fill="none" stroke="#9d5f4a" stroke-width="2.5" stroke-linecap="round"/>
+     <path d="M101 130 L69 124 M102 139 L70 142 M199 130 L231 124 M198 139 L230 142" stroke="#9d5f4a" stroke-width="2" stroke-linecap="round"/>
+     <path d="M101 174 Q83 183 96 201 M126 192 L123 203 M175 192 L178 203 M200 174 Q219 182 207 201" fill="none" stroke="#9d5f4a" stroke-width="10" stroke-linecap="round"/>
+     <path d="M205 161 Q248 146 238 119" fill="none" stroke="#ffbf8e" stroke-width="14" stroke-linecap="round"/>
+     <path d="M205 161 Q248 146 238 119" fill="none" stroke="#9d5f4a" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <strong id="catCaption">Hasil akhir: kucing berdiri di atas tapak yang stabil</strong>
+   </div>
+   <div><div class="step-list">
+    <button class="step selected" onclick="catStep(0,this)"><strong>1. Rancang bentuk</strong><span>Lakar idea kucing dan fikirkan tapak yang seimbang.</span></button>
+    <button class="step" onclick="catStep(1,this)"><strong>2. Bina badan & kepala</strong><span>Gunakan kadbod, kotak atau bahan yang sesuai.</span></button>
+    <button class="step" onclick="catStep(2,this)"><strong>3. Cantum telinga, kaki & ekor</strong><span>Pastikan setiap bahagian melekat dengan kukuh.</span></button>
+    <button class="step" onclick="catStep(3,this)"><strong>4. Hias dan semak kestabilan</strong><span>Tambah mata, misai, corak dan uji sama ada karya boleh berdiri.</span></button>
+   </div></div>
+  </div>
+  <h3>Bahan cadangan</h3><div class="materials"><span class="chip">📦 Kadbod</span><span class="chip">🧴 Gam / pita</span><span class="chip">✏️ Pensel</span><span class="chip">🎨 Warna</span><span class="chip">✂️ Gunting</span><span class="chip">🟤 Plastisin</span></div>
+  <div class="callout" id="stepInfo"><strong>Langkah 1:</strong> rancang bentuk kucing dan tapak yang cukup luas supaya karya tidak mudah tumbang.</div>
+  <div class="actions"><button class="action secondary" onclick="go(1)">← Media & teknik</button><button class="action" onclick="go(3)">Uji pengetahuan →</button></div>
+ </section>
+ <section class="panel" id="panel3">
+  <h2>🏅 Kuiz: Uji Pengetahuan</h2><p class="sub">Jawab semua soalan, kemudian tekan “Semak jawapan”.</p>
+  <form id="quiz">
+   <div class="quiz-q"><p>1. Apakah ciri utama karya stabail?</p>
+    <label class="option"><input type="radio" name="q1" value="a"> A. Mesti dibuat di atas kertas rata sahaja</label>
+    <label class="option"><input type="radio" name="q1" value="b"> B. Karya tiga dimensi yang mempunyai struktur stabil</label>
+    <label class="option"><input type="radio" name="q1" value="c"> C. Tidak boleh menggunakan bahan kitar semula</label></div>
+   <div class="quiz-q"><p>2. Bahan manakah sesuai untuk membina tapak kucing?</p>
+    <label class="option"><input type="radio" name="q2" value="a"> A. Kadbod tebal</label>
+    <label class="option"><input type="radio" name="q2" value="b"> B. Air sahaja</label>
+    <label class="option"><input type="radio" name="q2" value="c"> C. Kain nipis tanpa sokongan</label></div>
+   <div class="quiz-q"><p>3. Mengapakah bahagian karya perlu dicantum dengan kukuh?</p>
+    <label class="option"><input type="radio" name="q3" value="a"> A. Supaya karya mudah tercabut</label>
+    <label class="option"><input type="radio" name="q3" value="b"> B. Supaya karya tidak mempunyai bentuk</label>
+    <label class="option"><input type="radio" name="q3" value="c"> C. Supaya karya kukuh dan tidak mudah tumbang</label></div>
+   <div class="quiz-q"><p>4. Apakah yang boleh ditambah untuk menunjukkan ciri kucing?</p>
+    <label class="option"><input type="radio" name="q4" value="a"> A. Mata, telinga, misai dan ekor</label>
+    <label class="option"><input type="radio" name="q4" value="b"> B. Roda dan stereng sahaja</label>
+    <label class="option"><input type="radio" name="q4" value="c"> C. Tiada perincian langsung</label></div>
+   <div class="quiz-q"><p>5. Apakah tindakan selamat semasa menghasilkan karya?</p>
+    <label class="option"><input type="radio" name="q5" value="a"> A. Berlari sambil memegang gunting</label>
+    <label class="option"><input type="radio" name="q5" value="b"> B. Menggunakan alat mengikut arahan guru</label>
+    <label class="option"><input type="radio" name="q5" value="c"> C. Menyapu gam pada muka</label></div>
+   <div class="actions"><button class="action" type="button" onclick="checkQuiz()">Semak jawapan</button><button class="action secondary" type="reset" onclick="resetQuiz()">Cuba semula</button></div>
+  </form>
+  <div class="result" id="result"><h3 id="scoreTitle">Keputusan</h3><p id="scoreText"></p><div id="feedback" class="feedback"></div><button class="action" onclick="window.print()">Cetak keputusan</button></div>
+  <div class="actions"><button class="action secondary" onclick="go(2)">← Kembali ke bina kucing</button><button class="action" onclick="go(0)">Kembali ke mula ↺</button></div>
+ </section>
+</main>
+<footer>Simulator pembelajaran PSV Tahun 5 · Unit 9: Haiwan Peliharaan<br>Belajar, bina, hias dan semak kestabilan karya kamu!</footer>
+<script>
+let current=0;
+function go(n){current=n;document.querySelectorAll('.panel').forEach((p,i)=>p.classList.toggle('active',i===n));document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===n));document.getElementById('progressText').textContent=(n+1)+' daripada 4';document.getElementById('progressBar').style.width=((n+1)*25)+'%';window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>go(Number(t.dataset.tab))));
+function showMedia(title,desc){document.getElementById('mediaInfo').innerHTML='<strong>'+title+':</strong> '+desc;}
+const stepTexts=[
+'Langkah 1: rancang bentuk kucing dan tapak yang cukup luas supaya karya tidak mudah tumbang.',
+'Langkah 2: bina badan dan kepala menggunakan bahan pilihan. Pastikan saiz kepala seimbang dengan badan.',
+'Langkah 3: cantum telinga, kaki dan ekor. Tunggu gam melekat dan sokong bahagian yang longgar.',
+'Langkah 4: tambah mata, misai dan corak. Letakkan karya di atas permukaan rata dan uji sama ada ia boleh berdiri.'
+];
+function catStep(n,el){document.querySelectorAll('.step').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');document.getElementById('stepInfo').innerHTML='<strong>'+stepTexts[n].split(':')[0]+':</strong>'+stepTexts[n].split(':').slice(1).join(':');document.getElementById('catCaption').textContent=['Rancang idea dan tapak','Bina bentuk asas','Cantum bahagian dengan kukuh','Hias dan uji kestabilan'][n];}
+function checkQuiz(){const ans={q1:'b',q2:'a',q3:'c',q4:'a',q5:'b'};let score=0,answered=0;Object.keys(ans).forEach(q=>{const v=document.querySelector('input[name="'+q+'"]:checked');if(v){answered++;if(v.value===ans[q])score++;}});const r=document.getElementById('result');r.style.display='block';document.getElementById('scoreTitle').textContent='Skor kamu: '+score+'/5';document.getElementById('scoreText').textContent='Jawapan dijawab: '+answered+'/5. '+(answered<5?'Lengkapkan semua soalan untuk keputusan penuh.':'');document.getElementById('feedback').textContent=score===5?'Hebat! Kamu sudah menguasai asas stabail.':score>=3?'Bagus! Semak semula bahagian yang belum dikuasai.':'Teruskan usaha. Baca semula bahagian media dan teknik, kemudian cuba lagi.';r.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function resetQuiz(){setTimeout(()=>{document.getElementById('result').style.display='none';},0);}
+</script>
+</body>
+</html>
